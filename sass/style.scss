@@ -1,9 +1,6 @@
-@use "./base/base";
-@use "./base/reset";
-@use "./module/top";
-@use "./module/header";
-@use "./module/inner";
-@use "./module/title";
-@use "./module/section-title";
-@use "./module/tab";
-@use "./global" as *;
+// ファイルごとに一括読み込み
+@use "./foundation";
+@use "./layout";
+@use "./component";
+@use "./project";
+@use "./utility";
