@@ -130,80 +130,52 @@
             works
           </h2>
           <div class="p-works__wrap">
+            <?php
+            $args = [
+                "post_type" => "works",
+                "posts_per_page" => 3
+            ];
+            $the_query = new WP_Query($args);
+            ?>
+            <?php if ($the_query->have_posts()) : ?>
             <ul class="p-works__list p-works-list">
+              <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
               <li class="p-works-list__item c-works-item js-fadeUp__top">
-                <a href="works-detail.html">
+                <a href="<?php the_permalink() ?>">
                   <picture class="c-works-item__img">
-                    <source srcset="<?php echo esc_url(get_theme_file_uri("/images/common/works_1.png")); ?>"
-                      media="(min-width: 768px)" type="image/jpg" />
-                    <!-- 幅768px以上なら表示 -->
-                    <img src="<?php echo esc_url(get_theme_file_uri("/images/common/worksSP_01.png")); ?>"
-                      alt="車に鍵を差している画像" />
-                    <!-- それ以外で表示 -->
+                    <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail('full'); ?>
+                    <?php else : ?>
+                    <img src="<?php echo esc_url(get_theme_file_uri("/images/common/logo_1.png")); ?>"
+                      alt="NoImage画像" />
+                    <?php endif; ?>
                   </picture>
                   <div class="c-works-item__content">
-                    <p class="c-category c-works-item__category">
-                      修理・整備
-                    </p>
+                    <?php
+                    $taxonomy_terms = get_the_terms($post->ID, 'genre');
+                    if ( ! empty( $taxonomy_terms ) ) {
+                        foreach( $taxonomy_terms as $taxonomy_term ) {
+                            echo '<p class="c-category c-works-item__category">' . esc_html( $taxonomy_term->name ) . '</p>';
+                        }
+                    }
+                    ?>
                     <p class="c-works-item__title u-underline__black--works">
-                      車のドアが開けられなくなった｜ドアロックの交換と...
+                      <?php the_title(); ?>
                     </p>
                     <p class="c-works-item__text">
-                      弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく...
+                      <?php the_content(); ?>
                     </p>
-                    <time class="c-date c-works-item__date" datetime="2022-09-02">2022.09.02</time>
+                    <time class="c-date c-works-item__date"
+                      datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.n.j'); ?></time>
                   </div>
                 </a>
               </li>
-              <li class="p-works-list__item c-works-item js-fadeUp__top">
-                <a href="works-detail.html">
-                  <picture class="c-works-item__img">
-                    <source srcset="<?php echo esc_url(get_theme_file_uri("/images/common/works_2.png")); ?>"
-                      media="(min-width: 768px)" type="image/jpg" />
-                    <!-- 幅768px以上なら表示 -->
-                    <img src="<?php echo esc_url(get_theme_file_uri("/images/common/worksSP_02.png")); ?>"
-                      alt="板金修理している画像" />
-                    <!-- それ以外で表示 -->
-                  </picture>
-                  <div class="c-works-item__content">
-                    <p class="c-category c-works-item__category">
-                      修理・整備
-                    </p>
-                    <p class="c-works-item__title u-underline__black--works">
-                      愛車のリアバンパーに傷がついた｜板金修理と塗装で...
-                    </p>
-                    <p class="c-works-item__text">
-                      弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく...
-                    </p>
-                    <time class="c-date c-works-item__date" datetime="2022-08-26">2022.08.26</time>
-                  </div>
-                </a>
-              </li>
-              <li class="p-works-list__item c-works-item js-fadeUp__top">
-                <a href="works-detail.html">
-                  <picture class="c-works-item__img">
-                    <source srcset="<?php echo esc_url(get_theme_file_uri("/images/common/works_3.png")); ?>"
-                      media="(min-width: 768px)" type="image/jpg" />
-                    <!-- 幅768px以上なら表示 -->
-                    <img src="<?php echo esc_url(get_theme_file_uri("/images/common/worksSP_03.png")); ?>"
-                      alt="お客様と従業員が話している画像" />
-                    <!-- それ以外で表示 -->
-                  </picture>
-                  <div class="c-works-item__content">
-                    <p class="c-category c-works-item__category">
-                      購入サポート
-                    </p>
-                    <p class="c-works-item__title u-underline__black--works">
-                      はじめて輸入車の購入を検討中のお客様｜憧れのBM...
-                    </p>
-                    <p class="c-works-item__text">
-                      弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく...
-                    </p>
-                    <time class="c-date c-works-item__date" datetime="2022-08-20">2022.08.20</time>
-                  </div>
-                </a>
-              </li>
+              <?php endwhile; ?>
+              <?php wp_reset_postdata(); ?>
             </ul>
+            <?php else : ?>
+            <p>記事が投稿されていません</p>
+            <?php endif; ?>
             <div class="p-works-list__item-btn">
               <a href="works.html" class="c-btn c-btn--box-none">READ MORE</a>
             </div>
@@ -220,109 +192,87 @@
               news
             </h2>
             <ul class="p-news-menu__list c-category-list c-category-list--news">
-              <li class="c-category-list__item js-fadeUp__bottom">
-                <p class="c-category-list__text active">
-                  すべてのお知らせ
-                </p>
-              </li>
-              <li class="c-category-list__item js-fadeUp__bottom">
-                <p class="c-category-list__text">トピックス</p>
-              </li>
-              <li class="c-category-list__item js-fadeUp__bottom">
-                <p class="c-category-list__text">イベント・キャンペーン</p>
-              </li>
-              <li class="c-category-list__item js-fadeUp__bottom">
-                <p class="c-category-list__text">入庫車情報</p>
-              </li>
+              <?php
+            $current_category_id = get_queried_object_id();
+            $categories = get_categories([
+                'orderby' => 'name',
+                'order'   => 'ASC',
+                // 表示するカテゴリーの数を指定
+                'number'  => 5
+            ]);
+
+            // 通常投稿一覧ページへのURL
+            $home_class = (is_home() || is_front_page()) ? 'active' : '';
+            $home_link = sprintf(
+                //通常投稿一覧ページへのaタグに付与するクラスを指定できる
+                '<li class="c-category-list__item js-fadeUp__bottom"><a class="c-category-list__text %s" href="%s" alt="%s">全てのお知らせ</a></li>',
+                $home_class,
+                // 通常投稿一覧ページのスラッグを指定
+                esc_url(home_url('/news')),
+                esc_attr(__('View all posts', 'textdomain'))
+            );
+            echo sprintf(esc_html__('%s', 'textdomain'), $home_link);
+
+            // カテゴリーのリンク
+            if ($categories) {
+                foreach ($categories as $category) {
+                    // カレントクラスに付与するクラスを指定できる
+                    $category_class = ($current_category_id === $category->term_id) ? 'active' : '';
+                    $category_link = sprintf(
+                        // 各カテゴリーに付与するクラスを指定できる
+                        '<li class="c-category-list__item js-fadeUp__bottom"><a class="c-category-list__text %s" href="%s" alt="%s">%s</a></li>',
+                        $category_class,
+                        esc_url(get_category_link($category->term_id)),
+                        esc_attr(sprintf(__('View all posts in %s', 'textdomain'), $category->name)),
+                        esc_html($category->name)
+                    );
+                    echo sprintf(esc_html__('%s', 'textdomain'), $category_link);
+                }
+            }
+            ?>
             </ul>
           </div>
           <div class="p-news__wrap">
+            <?php
+              $args = [
+                  "post_type" => "post",
+                  "posts_per_page" => 3
+              ];
+              $the_query = new WP_Query($args);
+              ?>
+            <?php if ($the_query->have_posts()) : ?>
             <ul class="p-news__list p-news-list">
+              <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
               <li class="p-news-list__item c-news-item js-fadeUp__top">
-                <a href="news-detail.html">
+                <a href="<?php the_permalink() ?>">
                   <div class="c-news-item__meta">
-                    <time class="c-date c-news-item__date" datetime="2022-09-02">
-                      2022.09.02
+                    <time class="c-date c-news-item__date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
+                      <?php echo get_the_date('Y.m.d'); ?>
                     </time>
                     <div class="c-category c-news-item__category">
                       <p>トピックス</p>
                     </div>
-                    <div class="c-category c-news-item__category">
-                      <p>イベント・キャンペーン</p>
-                    </div>
+
+                    <?php
+                      $categories = get_the_category();
+                      if ( ! empty( $categories ) ) {
+                      foreach( $categories as $category ) {
+                      echo '<div class="c-category c-news-item__category">' . esc_html( $category->name ) . '</div>';
+                      }
+                      } 
+                    ?>
                   </div>
                   <div class="c-news-item__title">
-                    <p>2022年10月8日・9日・10日の3日間、試乗車フェアを開催します</p>
+                    <p><?php the_title(); ?></p>
                   </div>
                 </a>
               </li>
-              <li class="p-news-list__item c-news-item js-fadeUp__top">
-                <a href="news-detail.html">
-                  <div class="c-news-item__meta">
-                    <time class="c-date c-news-item__date" datetime="2022-08-23">
-                      2022.08.23
-                    </time>
-                    <div class="c-category c-news-item__category">
-                      <p>トピックス</p>
-                    </div>
-                    <div class="c-category c-news-item__category">
-                      <p>入庫車情報</p>
-                    </div>
-                  </div>
-                  <div class="c-news-item__title">
-                    <p>【入庫車のご案内】メルセデスベンツG 350が入庫しました</p>
-                  </div>
-                </a>
-              </li>
-              <li class="p-news-list__item c-news-item js-fadeUp__top">
-                <a href="news-detail.html">
-                  <div class="c-news-item__meta">
-                    <time class="c-date c-news-item__date" datetime="2022-08-07">
-                      2022.08.07
-                    </time>
-                    <div class="c-category c-news-item__category">
-                      <p>トピックス</p>
-                    </div>
-                  </div>
-                  <div class="c-news-item__title">
-                    <p>お盆休みのご案内</p>
-                  </div>
-                </a>
-              </li>
-              <li class="p-news-list__item c-news-item js-fadeUp__top">
-                <a href="news-detail.html">
-                  <div class="c-news-item__meta">
-                    <time class="c-date c-news-item__date" datetime="2022-08-03">
-                      2022.08.03
-                    </time>
-                    <div class="c-category c-news-item__category">
-                      <p>トピックス</p>
-                    </div>
-                    <div class="c-category c-news-item__category">
-                      <p>入庫車情報</p>
-                    </div>
-                  </div>
-                  <div class="c-news-item__title">
-                    <p>【入庫車のご案内】JEEPラングラー アンリミテッド サハラが入庫しました</p>
-                  </div>
-                </a>
-              </li>
-              <li class="p-news-list__item c-news-item js-fadeUp__top">
-                <a href="news-detail.html">
-                  <div class="c-news-item__meta">
-                    <time class="c-date c-news-item__date" datetime="2022-07-26">
-                      2022.07.26
-                    </time>
-                    <div class="c-category c-news-item__category">
-                      <p>トピックス</p>
-                    </div>
-                  </div>
-                  <div class="c-news-item__title">
-                    <p>半導体不足は輸入車・輸入中古車にどう影響するか</p>
-                  </div>
-                </a>
-              </li>
+              <?php endwhile; ?>
+              <?php wp_reset_postdata(); ?>
             </ul>
+            <?php else : ?>
+            <p>記事が投稿されていません</p>
+            <?php endif; ?>
             <div class="p-news-list__item-btn">
               <a href="news.html" class="c-btn c-btn--box-none">READ MORE</a>
             </div>

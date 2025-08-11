@@ -296,6 +296,7 @@ a:hover {
   margin: 3.75rem auto 0 auto;
   max-width: 90rem;
   padding: 0 8.8125rem 7.5rem;
+  justify-content: space-between;
 }
 @media screen and (max-width: 767px) {
   .l-two-column {
@@ -801,9 +802,22 @@ a:hover {
     font-size: 0.875rem;
   }
 }
-.c-aside-menu__list {
-  border-bottom: solid 1px #E4E4E4;
+.c-aside-menu__lists--filter li {
+  border-bottom: solid 1px #e4e4e4;
   margin: 0 1.125rem;
+}
+.c-aside-menu__lists--filter li:last-child {
+  border-bottom: none;
+}
+.c-aside-menu__lists--filter a {
+  padding: 1.125rem 0;
+  display: flex;
+  position: relative;
+}
+.c-aside-menu__list {
+  border-bottom: solid 1px #e4e4e4;
+  margin: 0 1.125rem;
+  display: block;
 }
 @media screen and (max-width: 767px) {
   .c-aside-menu__list:last-child {
@@ -814,12 +828,6 @@ a:hover {
   padding: 1.125rem 0;
   display: flex;
   position: relative;
-}
-.c-aside-menu__list--filter {
-  display: block;
-}
-.c-aside-menu__list--filter:last-child {
-  border-bottom: none;
 }
 .c-aside-menu__list img {
   aspect-ratio: 100/100;
@@ -868,12 +876,12 @@ a:hover {
 .c-works-item a:hover {
   opacity: 0.8;
 }
-.c-works-item__img {
+.c-works-item__img img {
   aspect-ratio: 290/229;
   margin-right: 3.125rem;
 }
 @media screen and (max-width: 767px) {
-  .c-works-item__img {
+  .c-works-item__img img {
     aspect-ratio: 120/90;
     margin-right: 1.125rem;
     min-width: 7.5rem;
@@ -923,11 +931,13 @@ a:hover {
   display: inline-block;
   margin-left: 3.75rem;
   padding: 0;
+  min-width: 48.5rem;
 }
 @media screen and (max-width: 767px) {
   .c-works-item--archive {
     margin-left: 0;
     width: 100%;
+    min-width: initial;
   }
 }
 .c-works-item--archive + .c-works-item--archive {
@@ -944,16 +954,16 @@ a:hover {
     padding-bottom: 1.25rem;
   }
 }
-.c-works-item--archive .c-works-item__img {
-  aspect-ratio: 160/160;
+.c-works-item--archive .c-works-item__img img {
   margin-right: 1.875rem;
   max-width: 10rem;
+  max-height: 10rem;
 }
 @media screen and (max-width: 767px) {
-  .c-works-item--archive .c-works-item__img {
-    aspect-ratio: 130/100;
+  .c-works-item--archive .c-works-item__img img {
     margin-right: 0.9375rem;
-    min-width: 8.125rem;
+    max-width: 8.125rem;
+    max-height: 6.25rem;
   }
 }
 .c-works-item--archive .c-works-item__title {
@@ -2612,6 +2622,11 @@ a:hover {
 }
 @media screen and (max-width: 767px) {
   .p-news-detail__btn {
+    margin-top: 3rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .p-news-detail {
     margin-top: 3rem;
   }
 }

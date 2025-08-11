@@ -31,10 +31,10 @@
             <a href="service.html">service</a>
           </li>
           <li class="p-header__nav-item u-underline__black">
-            <a href="works.html">works</a>
+            <a href="<?php echo esc_url( home_url( '/works' ) ); ?>">works</a>
           </li>
           <li class="p-header__nav-item u-underline__black">
-            <a href="news.html">news</a>
+            <a href="<?php echo esc_url( home_url( '/news' ) ); ?>">news</a>
           </li>
           <li class="p-header__nav-item p-header__nav-item--contact u-underline__white">
             <a href="contact.html">
@@ -73,7 +73,7 @@
               <a href="works.html">works</a>
             </li>
             <li class="p-header__drawer-item">
-              <a href="news.html">news</a>
+              <a href="<?php echo esc_url( home_url( '/news' ) ); ?>">news</a>
             </li>
             <li class="p-header__drawer-item">
               <a href="contact.html">contact</a>

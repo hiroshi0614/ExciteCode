@@ -6,6 +6,7 @@
   margin: prem(60) auto 0 auto;
   max-width: prem(1440);
   padding: 0 prem(141) prem(120);
+  justify-content: space-between;
 
   @include mq('md') {
     flex-direction: column;

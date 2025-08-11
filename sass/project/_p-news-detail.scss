@@ -149,6 +149,11 @@
     @include mq('md') {
       margin-top: prem(48);
     }
-    
   }
-}
+
+    @include mq('md') {
+      margin-top: prem(48);
+    }
+    
+
+  }

@@ -1,4 +1,4 @@
-@use '../foundation' as *;
+@use "../foundation" as *;
 
 .c-works-item {
   padding: prem(50) prem(40) 0 prem(40);
@@ -24,7 +24,7 @@
     }
   }
 
-  &__img {
+  &__img img {
     aspect-ratio: 290 / 229;
     margin-right: prem(50);
 
@@ -79,10 +79,12 @@
     display: inline-block;
     margin-left: prem(60);
     padding: 0;
+    min-width: prem(776);
 
     @include mq('md') {
       margin-left: 0;
       width: 100%;
+      min-width: initial;
     }
 
     + .c-works-item--archive {
@@ -95,27 +97,28 @@
 
     & a {
       padding-bottom: prem(30);
-  
+
       @include mq("md") {
         padding-bottom: prem(20);
       }
     }
 
-    .c-works-item__img {
-      aspect-ratio: 160 / 160;
+    .c-works-item__img img {
+      // aspect-ratio: 160 / 160;
       margin-right: prem(30);
       max-width: prem(160);
-  
+      max-height: prem(160);
       @include mq("md") {
-        aspect-ratio: 130 / 100;
+        // aspect-ratio: 130 / 100;
         margin-right: prem(15);
-        min-width: prem(130);
+        max-width: prem(130);
+        max-height: prem(100);
       }
     }
 
     .c-works-item__title {
       font-size: prem(18);
-  
+
       @include mq("md") {
         font-size: prem(14);
         margin-bottom: prem(20);
