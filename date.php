@@ -19,21 +19,13 @@
     </div>
   </section>
 
+  <?php if (function_exists('bcn_display')) { ?>
   <div class="p-breadcrumb l-breadcrumb">
-    <div class="p-breadcrumb__inner">
-      <!-- Breadcrumb NavXTで出力される部分 ここから -->
-      <span>
-        <a href="index.html">
-          <span>top</span>
-        </a>
-      </span>
-
-      <span>
-        <span class="current-item">news</span>
-      </span>
-      <!-- Breadcrumb NavXTで出力される部分 ここまで -->
+    <div class="p-breadcrumb__inner" vocab="http://schema.org/" typeof="BreadcrumbList">
+      <?php bcn_display(); ?>
     </div>
   </div>
+  <?php } ?>
 
   <div class="l-sub-news p-sub-news">
     <div class="p-sub-news__inner inner">
@@ -133,5 +125,6 @@
       </div>
     </div>
   </div>
+  <?php get_template_part('template-parts/contact-parts'); ?>
 </main>
 <?php get_footer(); ?>

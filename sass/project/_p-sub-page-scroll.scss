@@ -17,6 +17,7 @@
 
     &__text {
       position: relative;
+      padding-right: prem(19);
 
       @include mq('md') {
         font-size: prem(12);
@@ -32,7 +33,7 @@
         transform: rotate(45deg);
         position: absolute;
         top: 0;
-        right: prem(-16);
+        right: prem(2);
         bottom: 0;
         margin: auto;
 

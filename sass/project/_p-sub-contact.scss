@@ -26,6 +26,11 @@
 
   &__text {
     line-height: calc(38 / 16);
+    margin-bottom: prem(100);
+
+    @include mq("md") {
+      margin-bottom: prem(40);
+    }
   }
 
   &__form {
@@ -34,6 +39,10 @@
       margin-top: prem(40);
       max-width: prem(800);
       width: 100%;
+
+      input {
+        color: #808080;
+      }
     }
 
     &-wrap + &-wrap {
@@ -49,6 +58,12 @@
     &-required {
       display: inline-block;
       color: #e20000;
+      position: absolute;
+      bottom: 0;
+
+      @include mq('md') {
+        left: 0;
+      }
     }
 
     &-text {
@@ -92,10 +107,13 @@
         border-width: 6px 6px 0 6px;
         border-color: #333 transparent transparent transparent;
         position: absolute;
-        top: 0;
+        top: vw(1440, 19);
         right: prem(15);
         bottom: 0;
-        margin: auto;
+
+        @include mq("md") {
+          top: prem(18);
+        }
       }
     }
 
@@ -182,6 +200,8 @@
 
     &-privacy {
       margin-top: prem(30);
+      position: relative;
+
 
       input {
         display: none;
@@ -195,6 +215,11 @@
           line-height: 1.5;
           letter-spacing: 0.08em;
 
+          @include mq('md') {
+            font-size: prem(14);
+            padding-left: prem(26);
+          }
+
           &::before {
             content: "";
             position: absolute;
@@ -205,6 +230,11 @@
             display: block;
             width: prem(20);
             height: prem(20);
+
+            @include mq('md') {
+              width: prem(17);
+              height: prem(17);
+            }
           }
 
           &::after {
@@ -304,10 +334,6 @@
         font-weight: $regular;
       }
 
-      &-textarea {
-        line-height : calc(32 / 14);
-      }
-
       &-submit input {
         padding: prem(20) prem(107);
         background-color: $color-navy;
@@ -364,13 +390,12 @@
   }
 
   &__thanks {
-
     &-title {
       font-family: Oswald;
       font-size: prem(40);
       font-weight: $bold;
 
-      @include mq('md') {
+      @include mq("md") {
         font-size: prem(24);
       }
     }
@@ -380,7 +405,7 @@
       font-weight: $medium;
       margin-top: prem(20);
 
-      @include mq('md') {
+      @include mq("md") {
         font-size: prem(14);
         margin-top: prem(10);
       }
@@ -388,20 +413,20 @@
 
     &-text {
       font-size: prem(16);
-      line-height : calc(38 / 16);
+      line-height: calc(38 / 16);
       font-weight: $regular;
       margin-top: prem(44);
 
-      @include mq('md') {
+      @include mq("md") {
         font-size: prem(14);
         margin-top: prem(30);
-        line-height : calc(32 / 14);
+        line-height: calc(32 / 14);
       }
 
       br {
         display: none;
 
-        @include mq('md') {
+        @include mq("md") {
           display: block;
         }
       }
@@ -416,4 +441,8 @@
   &--thanks {
     margin-top: prem(70);
   }
+}
+
+.wpcf7-spinner {
+  display: none !important;
 }

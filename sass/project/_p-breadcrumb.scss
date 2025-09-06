@@ -20,7 +20,7 @@
   }
 }
 
-.p-breadcrumb .prev-item::before {
+.p-breadcrumb__separator {
 
     content: "";
     display: inline-block;
@@ -33,14 +33,4 @@
 
 .p-breadcrumb .current-item {
   color: #242424;
-
-  &::before {
-    content: "";
-    display: inline-block;
-    width: prem(20);
-    height: 1px;
-    background-color: #a9a9a9;
-    margin: 0 prem(10);
-    vertical-align: middle;
-  }
 }

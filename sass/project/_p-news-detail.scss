@@ -51,6 +51,7 @@
 
     h2 {
       margin-top: prem(40);
+      margin-bottom: prem(40);
       background-color: #f8f9f9;
       font-size: prem(22);
       border-left: solid 3px $color-navy;
@@ -69,6 +70,7 @@
       padding: 0 0 prem(10) prem(14);
       border-bottom: solid 1px #e4e4e4;
       position: relative;
+      margin-bottom: prem(40);
 
       @include mq('md') {
         margin-top: prem(40);
@@ -91,7 +93,6 @@
     }
 
     p {
-      margin-top: prem(40);
       line-height: calc(32 / 16);
 
       @include mq('md') {

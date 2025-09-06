@@ -57,7 +57,7 @@
               弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく、オーナー様となる方がクルマから直接感じるリアルな感性を第一にした、最良の一台との出会いをコーディネートいたします。
             </p>
             <div class="p-about-list__item-btn">
-              <a href="about.html" class="c-btn c-btn--box-none">READ MORE</a>
+              <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="c-btn c-btn--box-none">READ MORE</a>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
                 国を超え、メーカーを超え、高級の本質をお届けする特別な一台との出会いをサポートします。
               </p>
               <div class="p-service-list__item-btn">
-                <a href="service.html" class="c-btn">READ MORE</a>
+                <a href="<?php echo esc_url( home_url( '/service/#support' ) ); ?>" class="c-btn">READ MORE</a>
               </div>
             </div>
           </li>
@@ -98,7 +98,7 @@
                 高度な輸入車修理技術と数多くの修理実績、熟練の技術・設備であなたの愛車を完全に直します。
               </p>
               <div class="p-service-list__item-btn">
-                <a href="service.html" class="c-btn">READ MORE</a>
+                <a href="<?php echo esc_url( home_url( '/service/#repair' ) ); ?>" class="c-btn">READ MORE</a>
               </div>
             </div>
           </li>
@@ -113,7 +113,7 @@
                 輸入車の取り扱いが県内トップクラス。専門の整備工場へ任せたいなら弊社へご相談ください。
               </p>
               <div class="p-service-list__item-btn">
-                <a href="service.html" class="c-btn">READ MORE</a>
+                <a href="<?php echo esc_url( home_url( '/service/#inspection' ) ); ?>" class="c-btn">READ MORE</a>
               </div>
             </div>
           </li>
@@ -142,29 +142,30 @@
               <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
               <li class="p-works-list__item c-works-item js-fadeUp__top">
                 <a href="<?php the_permalink() ?>">
-                  <picture class="c-works-item__img">
+                  <div class="c-works-item__img">
                     <?php if (has_post_thumbnail()) : ?>
                     <?php the_post_thumbnail('full'); ?>
                     <?php else : ?>
-                    <img src="<?php echo esc_url(get_theme_file_uri("/images/common/logo_1.png")); ?>"
+                    <img
+                      src="<?php echo esc_url(get_theme_file_uri("/images/common/featured-image-horizontal.jpg")); ?>"
                       alt="NoImage画像" />
                     <?php endif; ?>
-                  </picture>
+                  </div>
                   <div class="c-works-item__content">
                     <?php
                     $taxonomy_terms = get_the_terms($post->ID, 'genre');
                     if ( ! empty( $taxonomy_terms ) ) {
                         foreach( $taxonomy_terms as $taxonomy_term ) {
-                            echo '<p class="c-category c-works-item__category">' . esc_html( $taxonomy_term->name ) . '</p>';
+                            echo '<p class="c-category c-category--works">' . esc_html( $taxonomy_term->name ) . '</p>';
                         }
                     }
                     ?>
-                    <p class="c-works-item__title u-underline__black--works">
+                    <div class="c-works-item__title u-underline__black--works">
                       <?php the_title(); ?>
-                    </p>
-                    <p class="c-works-item__text">
+                    </div>
+                    <div class="c-works-item__text">
                       <?php the_content(); ?>
-                    </p>
+                    </div>
                     <time class="c-date c-works-item__date"
                       datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.n.j'); ?></time>
                   </div>
@@ -177,7 +178,7 @@
             <p>記事が投稿されていません</p>
             <?php endif; ?>
             <div class="p-works-list__item-btn">
-              <a href="works.html" class="c-btn c-btn--box-none">READ MORE</a>
+              <a href="<?php echo esc_url( home_url( '/works' ) ); ?>" class="c-btn c-btn--box-none">READ MORE</a>
             </div>
           </div>
         </div>
@@ -249,10 +250,6 @@
                     <time class="c-date c-news-item__date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
                       <?php echo get_the_date('Y.m.d'); ?>
                     </time>
-                    <div class="c-category c-news-item__category">
-                      <p>トピックス</p>
-                    </div>
-
                     <?php
                       $categories = get_the_category();
                       if ( ! empty( $categories ) ) {
@@ -274,12 +271,13 @@
             <p>記事が投稿されていません</p>
             <?php endif; ?>
             <div class="p-news-list__item-btn">
-              <a href="news.html" class="c-btn c-btn--box-none">READ MORE</a>
+              <a href="<?php echo esc_url( home_url( '/news' ) ); ?>" class="c-btn c-btn--box-none">READ MORE</a>
             </div>
           </div>
         </div>
       </div>
     </section>
   </div>
+  <?php get_template_part('template-parts/contact-parts'); ?>
 </main>
 <?php get_footer(); ?>

@@ -14,6 +14,71 @@ function my_setup()
 }
 add_action('after_setup_theme', 'my_setup');
 
+add_action('init', function () {
+    if (is_admin()) {
+        return;
+    }
+    // wpautop/shortcode_unautop を現在の優先度で確実に無効化
+    $filtersToRemove = [
+        ['hook' => 'the_content', 'callback' => 'wpautop'],
+        ['hook' => 'the_excerpt', 'callback' => 'wpautop'],
+        ['hook' => 'the_content', 'callback' => 'shortcode_unautop'],
+        ['hook' => 'the_excerpt', 'callback' => 'shortcode_unautop'],
+    ];
+    foreach ($filtersToRemove as $entry) {
+        $priority = has_filter($entry['hook'], $entry['callback']);
+        if ($priority !== false) {
+            remove_filter($entry['hook'], $entry['callback'], $priority);
+        }
+        // 念のため一般的な優先度も明示的に外す
+        remove_filter($entry['hook'], $entry['callback'], 10);
+        remove_filter($entry['hook'], $entry['callback'], 9);
+        remove_filter($entry['hook'], $entry['callback'], 11);
+    }
+}, 99);
+
+// より強力な自動整形無効化とbrタグ削除
+add_filter('the_content', function($content) {
+    // 既存のbrタグを削除
+    $content = str_replace(['<br>', '<br/>', '<br />'], '', $content);
+    // 連続する改行を1つに統一
+    $content = preg_replace('/\n\s*\n/', "\n", $content);
+    return $content;
+}, 999);
+
+add_filter('the_excerpt', function($excerpt) {
+    // 既存のbrタグを削除
+    $excerpt = str_replace(['<br>', '<br/>', '<br />'], '', $excerpt);
+    // 連続する改行を1つに統一
+    $excerpt = preg_replace('/\n\s*\n/', "\n", $excerpt);
+    return $excerpt;
+}, 999);
+
+// ブロックエディタ対策: 段落ブロックの<p>/<br>を除去
+add_filter('render_block', function ($block_content, $block) {
+    if (is_admin()) {
+        return $block_content;
+    }
+    if (isset($block['blockName']) && $block['blockName'] === 'core/paragraph') {
+        $block_content = str_replace(['<br>', '<br/>', '<br />'], '', $block_content);
+        $block_content = preg_replace('#</?p\b[^>]*>#', '', $block_content);
+        $block_content = preg_replace('/\n\s*\n/', "\n", $block_content);
+    }
+    return $block_content;
+}, 99, 2);
+
+// 投稿保存時にも自動整形を無効化
+remove_filter('content_save_pre', 'wp_filter_post_kses');
+remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
+
+// aspect-ratioが正しく動作するように画像のwidth/height属性を削除
+function remove_image_dimensions( $html ) {
+    $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+    return $html;
+}
+add_filter( 'post_thumbnail_html', 'remove_image_dimensions', 10 );
+add_filter( 'image_send_to_editor', 'remove_image_dimensions', 10 );
+
 /* CSSとJavaScriptの読み込み */
 function my_script_init()
 { // WordPressに含まれているjquery.jsを読み込まない

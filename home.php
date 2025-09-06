@@ -1,39 +1,15 @@
 <?php get_header(); ?>
 <main>
   <section>
-    <div class="c-sub-mv">
-      <div class="c-sub-mv__inner">
-        <h2 class="c-sub-mv__title js-fadeUp__left delay">
-          news<span>お知らせ</span>
-        </h2>
-        <div class="c-sub-mv__img js-fadeUp__bottom">
-          <picture>
-            <source srcset="<?php echo esc_url(get_theme_file_uri("./images/common/news_FV.png")); ?>"
-              media="(min-width: 768px)" type="image/jpg" />
-            <!-- 幅768px以上なら表示 -->
-            <img src="<?php echo esc_url(get_theme_file_uri("./images/common/news_FV-sp.png")); ?>" alt="サービス紹介ページ" />
-            <!-- それ以外で表示 -->
-          </picture>
-        </div>
-      </div>
-    </div>
+    <?php get_template_part('/template-parts/mv'); ?>
   </section>
-
+  <?php if (function_exists('bcn_display')) { ?>
   <div class="p-breadcrumb l-breadcrumb">
-    <div class="p-breadcrumb__inner">
-      <!-- Breadcrumb NavXTで出力される部分 ここから -->
-      <span>
-        <a href="index.html">
-          <span>top</span>
-        </a>
-      </span>
-
-      <span>
-        <span class="current-item">news</span>
-      </span>
-      <!-- Breadcrumb NavXTで出力される部分 ここまで -->
+    <div class="p-breadcrumb__inner" vocab="http://schema.org/" typeof="BreadcrumbList">
+      <?php bcn_display(); ?>
     </div>
   </div>
+  <?php } ?>
 
   <div class="l-sub-news p-sub-news">
     <div class="p-sub-news__inner inner">
@@ -133,5 +109,6 @@
       </div>
     </div>
   </div>
+  <?php get_template_part('template-parts/contact-parts'); ?>
 </main>
 <?php get_footer(); ?>

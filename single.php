@@ -1,23 +1,11 @@
 <?php get_header(); ?>
+<?php if (function_exists('bcn_display')) { ?>
 <div class="p-breadcrumb l-breadcrumb l-breadcrumb--detail">
-  <div class="p-breadcrumb__inner">
-    <!-- Breadcrumb NavXTで出力される部分 ここから -->
-    <span>
-      <a href="index.html">
-        <span>top</span>
-      </a>
-    </span>
-    <span>
-      <a href="news.html">
-        <span class="prev-item">news</span>
-      </a>
-    </span>
-    <span>
-      <span class="current-item">記事タイトル</span>
-    </span>
-    <!-- Breadcrumb NavXTで出力される部分 ここまで -->
+  <div class="p-breadcrumb__inner" vocab="http://schema.org/" typeof="BreadcrumbList">
+    <?php bcn_display(); ?>
   </div>
 </div>
+<?php } ?>
 
 
 <div class="l-two-column">
@@ -135,4 +123,5 @@
     </div>
   </aside>
 </div>
+<?php get_template_part('template-parts/contact-parts'); ?>
 <?php get_footer(); ?>

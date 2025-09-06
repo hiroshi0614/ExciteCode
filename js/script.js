@@ -23,8 +23,7 @@ jQuery(function ($) {
   });
 
   // ===== メニューアクティブ切り替え =====
-  const menuSelector =
-    ".p-news-menu__list-text, .c-category-list__text";
+  const menuSelector = ".p-news-menu__list-text, .c-category-list__text";
   $(menuSelector).on("click", function () {
     $(`${menuSelector}.active`).removeClass("active");
     $(this).addClass("active");
@@ -59,12 +58,15 @@ jQuery(function ($) {
   // ===== 文字数制限・省略 =====
   // newsページ：タイトル46文字以降を省略
   // スマホ表示時は40文字、PC・タブレットは46文字で省略
-  $(".c-news-item__title p").each(function () {
-    const text = $(this).text().trim();
+  $(".c-news-item__title").each(function () {
+    const $t = $(this).find("p").first().length
+      ? $(this).find("p").first()
+      : $(this);
+    const text = $t.text().trim();
     const isSp = window.matchMedia("(max-width: 767px)").matches;
     const limit = isSp ? 40 : 46;
     if (text.length > limit) {
-      $(this).text(text.slice(0, limit) + "…");
+      $t.text(text.slice(0, limit) + "…");
     }
   });
 
@@ -84,8 +86,22 @@ jQuery(function ($) {
     }
   });
 
-  // ===== サブワークスリストタイトルの改行・省略処理 =====
+  // ===== ワークスリストタイトルの省略処理 =====
+
   $(".c-works-item__title").each(function () {
+    const text = $(this).text().trim();
+    const newText = text.length > 24 ? text.slice(0, 24) + "…" : text;
+    $(this).html(newText);
+  });
+
+  $(".c-works-item__text").each(function () {
+    const text = $(this).text().trim();
+    const newText = text.length > 82 ? text.slice(0, 82) + "…" : text;
+    $(this).html(newText);
+  });
+
+  // ===== サブワークスリストタイトルの改行・省略処理 =====
+  $(".c-works-item__title--detail").each(function () {
     const text = $(this).text().trim();
     let newText = "";
     const isSp = window.matchMedia("(max-width: 767px)").matches;
