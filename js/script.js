@@ -57,7 +57,7 @@ jQuery(function ($) {
 
   // ===== 文字数制限・省略 =====
   // newsページ：タイトル46文字以降を省略
-  // スマホ表示時は40文字、PC・タブレットは46文字で省略
+
   $(".c-news-item__title").each(function () {
     const $t = $(this).find("p").first().length
       ? $(this).find("p").first()
@@ -70,15 +70,7 @@ jQuery(function ($) {
     }
   });
 
-  // news-detailページ：サイドバー記事36文字以降を省略
-  $(".c-aside-menu__text").each(function () {
-    const text = $(this).text().trim();
-    if (text.length > 36) {
-      $(this).text(text.slice(0, 36) + "…");
-    }
-  });
-
-  // news-detailページ：サイドバー記事10文字以降を省略
+  //パンくず文字省略
   $(".current-item").each(function () {
     const text = $(this).text().trim();
     if (text.length > 10) {
@@ -86,19 +78,7 @@ jQuery(function ($) {
     }
   });
 
-  // ===== ワークスリストタイトルの省略処理 =====
 
-  $(".c-works-item__title").each(function () {
-    const text = $(this).text().trim();
-    const newText = text.length > 24 ? text.slice(0, 24) + "…" : text;
-    $(this).html(newText);
-  });
-
-  $(".c-works-item__text").each(function () {
-    const text = $(this).text().trim();
-    const newText = text.length > 82 ? text.slice(0, 82) + "…" : text;
-    $(this).html(newText);
-  });
 
   // ===== サブワークスリストタイトルの改行・省略処理 =====
   $(".c-works-item__title--detail").each(function () {

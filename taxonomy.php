@@ -118,7 +118,10 @@
                         }
                     }
                 ?>
-                <p class="c-works-item__title u-underline__black--works"><?php the_title(); ?></p>
+                <div class="c-works-item__title-wrap">
+                  <p class=" c-works-item__title c-works-item__title--detail u-underline__black--multiline">
+                    <?php the_title(); ?></p>
+                </div>
                 <time class="c-date c-works-item__date"
                   datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
               </div>

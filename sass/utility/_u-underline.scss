@@ -44,6 +44,23 @@
   transition: transform 0.3s;
 }
 
+.u-underline__black--multiline {
+  background-image: linear-gradient(90deg, #333, #333); /* 線の色 */
+  background-position: left bottom; /* 線の起点を左・下に設定 */
+  background-repeat: no-repeat;
+  background-size: 0 1px; /* 線の横幅を0、縦幅を2pxに */
+  color: #333; /* 文字色 */
+  padding-bottom: 2px; /* 下線を下にズラす */
+  text-decoration: none; /* デフォルトのテキストの下線を消す */
+  transition: background-size 0.6s; /* 線を伸ばすアニメーション実行時間を指定 */
+  display: inline;
+  box-decoration-break: clone; /* 複数行の場合、各行に装飾を適用 */
+
+  &:hover {
+    background-size: 100% 1px; /* 線の横幅を100%にする */
+  }
+}
+
 .u-underline__white a span::after {
   position: absolute;
   justify-content: center;

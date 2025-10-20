@@ -37,39 +37,6 @@ add_action('init', function () {
     }
 }, 99);
 
-// より強力な自動整形無効化とbrタグ削除
-add_filter('the_content', function($content) {
-    // 既存のbrタグを削除
-    $content = str_replace(['<br>', '<br/>', '<br />'], '', $content);
-    // 連続する改行を1つに統一
-    $content = preg_replace('/\n\s*\n/', "\n", $content);
-    return $content;
-}, 999);
-
-add_filter('the_excerpt', function($excerpt) {
-    // 既存のbrタグを削除
-    $excerpt = str_replace(['<br>', '<br/>', '<br />'], '', $excerpt);
-    // 連続する改行を1つに統一
-    $excerpt = preg_replace('/\n\s*\n/', "\n", $excerpt);
-    return $excerpt;
-}, 999);
-
-// ブロックエディタ対策: 段落ブロックの<p>/<br>を除去
-add_filter('render_block', function ($block_content, $block) {
-    if (is_admin()) {
-        return $block_content;
-    }
-    if (isset($block['blockName']) && $block['blockName'] === 'core/paragraph') {
-        $block_content = str_replace(['<br>', '<br/>', '<br />'], '', $block_content);
-        $block_content = preg_replace('#</?p\b[^>]*>#', '', $block_content);
-        $block_content = preg_replace('/\n\s*\n/', "\n", $block_content);
-    }
-    return $block_content;
-}, 99, 2);
-
-// 投稿保存時にも自動整形を無効化
-remove_filter('content_save_pre', 'wp_filter_post_kses');
-remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
 
 // aspect-ratioが正しく動作するように画像のwidth/height属性を削除
 function remove_image_dimensions( $html ) {
@@ -92,6 +59,8 @@ function my_script_init()
     wp_enqueue_style( 'Roboto', '//fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' );
     wp_enqueue_style('style-css', get_template_directory_uri() . '/css/style.css', array(), '1.0.1');
     wp_enqueue_style( 'swiper', '//unpkg.com/swiper@8/swiper-bundle.min.css', array(), '8.0.0' );
+    // FontAwesomeの読み込み
+    wp_enqueue_style( 'fontawesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array(), '6.4.0' );
 }
 add_action('wp_enqueue_scripts', 'my_script_init');
 

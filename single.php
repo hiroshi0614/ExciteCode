@@ -43,13 +43,19 @@
           // 前の記事へのリンク
           $prev_link = get_previous_post_link('%link', '前の記事へ');
           if (!empty($prev_link)) {
-          echo str_replace('<a href=', '<a class="c-btn c-btn--prev c-btn--japanese" href=', $prev_link);
+            echo str_replace('<a href=', '<a class="c-btn c-btn--prev c-btn--japanese" href=', $prev_link);
+          } else {
+            // 前の記事がない場合は空のdivを出力
+            echo '<div></div>';
           }
           
           // 次の記事へのリンク
           $next_link = get_next_post_link('%link', '次の記事へ');
           if (!empty($next_link)) {
-          echo str_replace('<a href=', '<a class="c-btn c-btn--japanese" href=', $next_link);
+            echo str_replace('<a href=', '<a class="c-btn c-btn--japanese" href=', $next_link);
+          } else {
+            // 次の記事がない場合も空のdivを出力
+            echo '<div></div>';
           }
           ?>
         </div>
@@ -78,14 +84,14 @@
           <li class="c-aside-menu__list">
             <a href="<?php the_permalink() ?>">
               <?php if (has_post_thumbnail()) : ?>
-              <?php the_post_thumbnail('full', ['class' => 'c-aside-menu__list-img']); ?>
+              <?php the_post_thumbnail('thumbnail', ['class' => 'c-aside-menu__list-img']); ?>
               <?php else : ?>
               <img class="detail__thumbnail"
                 src="<?php echo esc_url(get_theme_file_uri("/images/common/logo_1.png")); ?>" alt="NoImage画像" />
               <?php endif; ?>
               <div class="c-aside-menu__text-wrap">
                 <p class="c-aside-menu__text">
-                  <?php the_title(); ?>
+                  <?php echo wp_trim_words( get_the_title(), 36, '…' ); ?>
                 </p>
                 <time class="c-date c-aside-menu__date"
                   datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y年n月j日'); ?></time>

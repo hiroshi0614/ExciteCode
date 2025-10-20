@@ -16,12 +16,24 @@
   <?php wp_body_open(); ?>
   <header class="p-header l-header">
     <div class="p-header__inner">
+
+      <?php if(is_front_page()): ?>
       <h1 class="p-header__logo">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
           <img src="<?php echo esc_url(get_theme_file_uri("/images/common/logo_1.png")); ?>"
             alt=" ExciteCode Automobile ロゴ" />
         </a>
+        <span style="display:none;">ExciteCode</span>
       </h1>
+      <?php else: ?>
+      <div class="p-header__logo">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+          <img src="<?php echo esc_url(get_theme_file_uri("/images/common/logo_1.png")); ?>"
+            alt=" ExciteCode Automobile ロゴ" />
+        </a>
+        <span style="display:none;">ExciteCode</span>
+      </div>
+      <?php endif; ?>
       <nav class="p-header__nav">
         <ul class="p-header__nav-list">
           <li class="p-header__nav-item u-underline__black">
@@ -82,22 +94,31 @@
               <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>">contact</a>
             </li>
             <li class="p-header__drawer-item">
-              <a href="https://www.facebook.com/?locale=ja_JP" target="_blank" rel="noopener noreferrer"
-                class="c-sns__list-icon" aria-label="Facebook">
-                <img src="<?php echo esc_url(get_theme_file_uri("/images/common/facebook.svg")); ?>" alt="Facebook" />
-              </a>
+              <a href="<?php echo esc_url( home_url( '#' ) ); ?>">プライバシーポリシー</a>
             </li>
-            <li class="p-header__drawer-item">
-              <a href="https://x.com/?lang=ja" class="c-sns__list-icon" target="_blank" rel="noopener noreferrer"
-                aria-label="Twitter">
-                <img src="<?php echo esc_url(get_theme_file_uri("/images/common/twitter.svg")); ?>" alt="Twitter" />
-              </a>
-            </li>
-            <li class="p-header__drawer-item">
-              <a href="https://www.instagram.com/" class="c-sns__list-icon" target="_blank" rel="noopener noreferrer"
-                aria-label="Instagram">
-                <img src="<?php echo esc_url(get_theme_file_uri("/images/common/instagram.svg")); ?>" alt="Instagram" />
-              </a>
+            <li class="p-header__drawer-item p-header__drawer-item--sns">
+              <ul>
+                <li class="p-header__drawer-item">
+                  <a href="https://www.facebook.com/?locale=ja_JP" target="_blank" rel="noopener noreferrer"
+                    class="c-sns__list-icon" aria-label="Facebook">
+                    <img src="<?php echo esc_url(get_theme_file_uri("/images/common/facebook.svg")); ?>"
+                      alt="Facebook" />
+                  </a>
+                </li>
+                <li class="p-header__drawer-item">
+                  <a href="https://x.com/?lang=ja" class="c-sns__list-icon" target="_blank" rel="noopener noreferrer"
+                    aria-label="Twitter">
+                    <img src="<?php echo esc_url(get_theme_file_uri("/images/common/twitter.svg")); ?>" alt="Twitter" />
+                  </a>
+                </li>
+                <li class="p-header__drawer-item">
+                  <a href="https://www.instagram.com/" class="c-sns__list-icon" target="_blank"
+                    rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="<?php echo esc_url(get_theme_file_uri("/images/common/instagram.svg")); ?>"
+                      alt="Instagram" />
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>

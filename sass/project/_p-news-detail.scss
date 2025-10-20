@@ -1,7 +1,6 @@
 @use "../foundation" as *;
 
 .p-news-detail {
-  padding: 0 prem(15);
 
   &__title {
     margin-top: prem(20);
@@ -32,6 +31,7 @@
 
     img {
       aspect-ratio: 718 / 380;
+      margin: 0 auto;
 
       @include mq('md') {
         aspect-ratio:  315/176 ;
@@ -150,6 +150,7 @@
     @include mq('md') {
       margin-top: prem(48);
     }
+
   }
 
     @include mq('md') {

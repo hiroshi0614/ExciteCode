@@ -58,8 +58,6 @@
     &-required {
       display: inline-block;
       color: #e20000;
-      position: absolute;
-      bottom: 0;
 
       @include mq('md') {
         left: 0;

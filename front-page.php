@@ -161,10 +161,10 @@
                     }
                     ?>
                     <div class="c-works-item__title u-underline__black--works">
-                      <?php the_title(); ?>
+                      <?php echo wp_trim_words( get_the_title(), 24, '…' ); ?>
                     </div>
                     <div class="c-works-item__text">
-                      <?php the_content(); ?>
+                      <?php echo wp_trim_words( get_the_content(), 82, '…' ); ?>
                     </div>
                     <time class="c-date c-works-item__date"
                       datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.n.j'); ?></time>
@@ -260,7 +260,7 @@
                     ?>
                   </div>
                   <div class="c-news-item__title">
-                    <p><?php the_title(); ?></p>
+                    <p><?php echo wp_trim_words( get_the_title(), 46, '…' ); ?></p>
                   </div>
                 </a>
               </li>

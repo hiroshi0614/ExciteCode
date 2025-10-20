@@ -63,6 +63,10 @@
       margin-top: prem(14);
       line-height: calc(28 / 14);
     }
+
+    &-wrap {
+      margin-top: prem(30);
+    }
   }
 
   &__text {
@@ -88,7 +92,7 @@
     display: inline-block;
     margin-left: prem(60);
     padding: 0;
-    min-width: prem(776);
+    max-width: prem(776);
 
     @include mq("md") {
       margin-left: 0;

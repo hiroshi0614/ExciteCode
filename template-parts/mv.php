@@ -44,9 +44,9 @@ if (is_page('about')) {
 
 <div class="c-sub-mv">
   <div class="c-sub-mv__inner">
-    <h2 class="c-sub-mv__title js-fadeUp__left delay">
+    <h1 class="c-sub-mv__title js-fadeUp__left delay">
       <?php echo esc_html($title_en); ?><span><?php echo esc_html($title_jp); ?></span>
-    </h2>
+    </h1>
     <div class="c-sub-mv__img js-fadeUp__bottom">
       <picture>
         <source srcset="<?php echo esc_url(get_template_directory_uri() . $image_pc); ?>" media="(min-width: 768px)"
