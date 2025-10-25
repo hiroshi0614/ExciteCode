@@ -59,26 +59,40 @@
       display: inline-block;
       color: #e20000;
 
-      @include mq('md') {
-        left: 0;
+      &--accept {
+        @include mq("md") {
+          position: absolute;
+          left: 0;
+        }
       }
     }
 
     &-text {
       font-weight: $regular;
       margin-left: prem(20);
+      font-size: prem(14);
+
+      @include mq("md") {
+        display: block;
+        margin-left: 0;
+        margin-top: prem(10);
+      }
     }
 
     &-input {
       margin-top: prem(14);
 
+      @include mq("md") {
+        margin-top: prem(10);
+      }
+
       input,
       select {
-        padding: prem(10);
+        padding: prem(16);
         width: 100%;
-        font-size: prem(16);
+        font-size: prem(14);
         line-height: 1;
-        border-radius: 0;
+        border-radius: prem(4);
         border: prem(2) solid #e0e0e0;
         appearance: none;
         background-color: transparent;
@@ -105,13 +119,9 @@
         border-width: 6px 6px 0 6px;
         border-color: #333 transparent transparent transparent;
         position: absolute;
-        top: vw(1440, 19);
+        top: 50%;
         right: prem(15);
-        bottom: 0;
-
-        @include mq("md") {
-          top: prem(18);
-        }
+        transform: translateY(-50%);
       }
     }
 
@@ -178,7 +188,7 @@
         width: 100%;
         height: prem(160);
         font-size: prem(16);
-        border-radius: 0;
+        border-radius: prem(4);
         border: prem(2) solid #e0e0e0;
         appearance: none;
         background-color: transparent;
@@ -200,7 +210,6 @@
       margin-top: prem(30);
       position: relative;
 
-
       input {
         display: none;
 
@@ -213,7 +222,7 @@
           line-height: 1.5;
           letter-spacing: 0.08em;
 
-          @include mq('md') {
+          @include mq("md") {
             font-size: prem(14);
             padding-left: prem(26);
           }
@@ -229,7 +238,7 @@
             width: prem(20);
             height: prem(20);
 
-            @include mq('md') {
+            @include mq("md") {
               width: prem(17);
               height: prem(17);
             }
@@ -300,6 +309,7 @@
 
       &-wrap {
         display: flex;
+        align-items: center;
 
         @include mq("md") {
           flex-direction: column;
@@ -315,8 +325,11 @@
 
         dd {
           font-size: prem(14);
+          max-width: prem(488);
+          line-height: calc(32 / 14);
           @include mq("md") {
             margin-top: prem(14);
+            max-width: 100%;
           }
         }
       }
@@ -326,6 +339,7 @@
         font-weight: $medium;
         max-width: prem(192);
         width: 100%;
+        line-height: 1;
       }
 
       &-input {
@@ -443,4 +457,10 @@
 
 .wpcf7-spinner {
   display: none !important;
+}
+
+.wpcf7-list-item {
+  @include mq("md") {
+    margin-left: prem(12);
+  }
 }

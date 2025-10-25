@@ -23,6 +23,7 @@
 
     & + .c-category--news {
       margin-left: prem(17);
+      font-size: prem(14);
 
       @include mq('md') {
         margin-left: prem(6);

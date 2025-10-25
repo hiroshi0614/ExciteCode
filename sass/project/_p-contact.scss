@@ -70,20 +70,24 @@
   }
 
   &__btn {
-    padding: prem(18) prem(33) prem(24) prem(32);
+    padding: vw(1440, 18) vw(1440, 33) vw(1440, 24) vw(1440, 32);
     position: relative;
     display: inline-block;
     border: 1px solid #fff;
     border-radius: 3px;
     background-color: #011950;
     transition: 0.3s;
+    max-width: vw(1440, 235);
+    width: 100%;
 
     @include mq('md') {
       padding: prem(19) prem(52) prem(18) prem(53);
+      max-width: none;
+      width: auto;
     }
 
     & i {
-      margin-right: prem(16);
+      margin-right: vw(1440, 6.2);
       font-size: vw(1440, 22);
 
       @include mq('md') {
@@ -131,11 +135,10 @@
 
     &--tel {
       margin-top: prem(20);
-      padding: prem(18) prem(24) prem(23.99);
+      padding: vw(1440, 18) vw(1440, 24) vw(1440, 23.99);
 
       @include mq('md') {
-        padding-right: prem(46); 
-        padding-left: prem(46);
+        padding: prem(18) prem(46);
       }
     }
   }
