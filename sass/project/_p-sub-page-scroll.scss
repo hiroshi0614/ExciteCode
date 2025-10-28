@@ -11,7 +11,7 @@
       color: $color-navy;
 
       @include mq('md') {
-        gap: prem(54.7);
+        gap: prem(50);
       }
     }
 
@@ -21,6 +21,7 @@
 
       @include mq('md') {
         font-size: prem(12);
+        padding-right: prem(12);
       }
 
       &::after{
@@ -38,7 +39,7 @@
         margin: auto;
 
         @include mq('md') {
-          right: prem(-10);
+          right: 0;
         }
       }
     }

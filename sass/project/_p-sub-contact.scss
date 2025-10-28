@@ -106,23 +106,20 @@
           color: rgba($color: #333, $alpha: 0.5);
         }
       }
+
+      /* セレクトボックスの矢印はCSSグラデーションで描画（上下中央固定） */
+      select {
+        padding-right: prem(40);
+        /* 画像の三角アイコンに変更 */
+        background-image: url("../images/common/Icon material-arrow-drop-down.svg");
+        background-repeat: no-repeat;
+        background-position: right prem(12) center;
+        background-size: prem(16) auto;
+      }
     }
 
     &-select {
       position: relative;
-
-      &::after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 6px 6px 0 6px;
-        border-color: #333 transparent transparent transparent;
-        position: absolute;
-        top: 50%;
-        right: prem(15);
-        transform: translateY(-50%);
-      }
     }
 
     &-radio {

@@ -57,7 +57,8 @@
               弊社は、輸入車選びのすべてを見つめ直し、新たなスタイルを提案するインポート・セレクト・ブランドです。これまでの憧れだけや批評家の意見といったイメージで選ぶのではなく、オーナー様となる方がクルマから直接感じるリアルな感性を第一にした、最良の一台との出会いをコーディネートいたします。
             </p>
             <div class="p-about-list__item-btn">
-              <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="c-btn c-btn--box-none">READ MORE</a>
+              <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="c-btn c-btn--box-none">READ
+                MORE</a>
             </div>
           </div>
         </div>
@@ -83,7 +84,8 @@
                 国を超え、メーカーを超え、高級の本質をお届けする特別な一台との出会いをサポートします。
               </p>
               <div class="p-service-list__item-btn">
-                <a href="<?php echo esc_url( home_url( '/service/#support' ) ); ?>" class="c-btn">READ MORE</a>
+                <a href="<?php echo esc_url( home_url( '/service/#support' ) ); ?>" class="c-btn">READ
+                  MORE</a>
               </div>
             </div>
           </li>
@@ -98,7 +100,8 @@
                 高度な輸入車修理技術と数多くの修理実績、熟練の技術・設備であなたの愛車を完全に直します。
               </p>
               <div class="p-service-list__item-btn">
-                <a href="<?php echo esc_url( home_url( '/service/#repair' ) ); ?>" class="c-btn">READ MORE</a>
+                <a href="<?php echo esc_url( home_url( '/service/#repair' ) ); ?>" class="c-btn">READ
+                  MORE</a>
               </div>
             </div>
           </li>
@@ -113,7 +116,8 @@
                 輸入車の取り扱いが県内トップクラス。専門の整備工場へ任せたいなら弊社へご相談ください。
               </p>
               <div class="p-service-list__item-btn">
-                <a href="<?php echo esc_url( home_url( '/service/#inspection' ) ); ?>" class="c-btn">READ MORE</a>
+                <a href="<?php echo esc_url( home_url( '/service/#inspection' ) ); ?>" class="c-btn">READ
+                  MORE</a>
               </div>
             </div>
           </li>
@@ -178,7 +182,8 @@
             <p>記事が投稿されていません</p>
             <?php endif; ?>
             <div class="p-works-list__item-btn">
-              <a href="<?php echo esc_url( home_url( '/works' ) ); ?>" class="c-btn c-btn--box-none">READ MORE</a>
+              <a href="<?php echo esc_url( home_url( '/works' ) ); ?>" class="c-btn c-btn--box-none">READ
+                MORE</a>
             </div>
           </div>
         </div>
@@ -271,7 +276,8 @@
             <p>記事が投稿されていません</p>
             <?php endif; ?>
             <div class="p-news-list__item-btn">
-              <a href="<?php echo esc_url( home_url( '/news' ) ); ?>" class="c-btn c-btn--box-none">READ MORE</a>
+              <a href="<?php echo esc_url( home_url( '/news' ) ); ?>" class="c-btn c-btn--box-none">READ
+                MORE</a>
             </div>
           </div>
         </div>
