@@ -115,6 +115,14 @@
         background-repeat: no-repeat;
         background-position: right prem(12) center;
         background-size: prem(16) auto;
+        /* iPhoneでセレクトボックスの文字が青くなるのを防ぐ */
+        -webkit-tap-highlight-color: transparent;
+        -webkit-text-fill-color: #333;
+
+        &:focus {
+          -webkit-text-fill-color: #333;
+          color: #333;
+        }
       }
     }
 

@@ -2879,6 +2879,13 @@ a:hover {
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 1rem auto;
+  /* iPhoneでセレクトボックスの文字が青くなるのを防ぐ */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-fill-color: #333;
+}
+.p-sub-contact__form-input select:focus {
+  -webkit-text-fill-color: #333;
+  color: #333;
 }
 .p-sub-contact__form-select {
   position: relative;
