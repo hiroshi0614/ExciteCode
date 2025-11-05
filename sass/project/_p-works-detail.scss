@@ -41,6 +41,10 @@
     @include mq('md') {
       margin-top: prem(34);
     }
+
+    img {
+      margin: 0 auto;
+    }
   }
 
   &__text {
@@ -57,10 +61,7 @@
     }
 
     p + p {
-
-      @include mq('md') {
         margin-top: prem(40);
-      }
     }
   }
 

@@ -1,39 +1,13 @@
 <?php get_header(); ?>
 <main>
   <section>
-    <div class="c-sub-mv">
-      <div class="c-sub-mv__inner">
-        <h2 class="c-sub-mv__title js-fadeUp__left delay">
-          about<span>私たちについて</span>
-        </h2>
-        <div class="c-sub-mv__img js-fadeUp__bottom">
-          <picture>
-            <source srcset="<?php echo esc_url(get_theme_file_uri("/images/common/about_FV.png")); ?>"
-              media="(min-width: 768px)" type="image/jpg" />
-            <!-- 幅768px以上なら表示 -->
-            <img src="<?php echo esc_url(get_theme_file_uri("/images/common/about_FV-sp.png")); ?>" alt="アバウトページ" />
-            <!-- それ以外で表示 -->
-          </picture>
-        </div>
-      </div>
-    </div>
+    <?php get_template_part('/template-parts/mv'); ?>
   </section>
 
   <?php if (function_exists('bcn_display')) { ?>
   <div class="p-breadcrumb l-breadcrumb">
     <div class="p-breadcrumb__inner" vocab="http://schema.org/" typeof="BreadcrumbList">
-      <!-- Breadcrumb NavXTで出力される部分 ここから -->
-      <!-- <span>
-        <a href="index.html">
-          <span>top</span>
-        </a>
-      </span>
-
-      <span>
-        <span class="current-item">about</span>
-      </span> -->
       <?php bcn_display(); ?>
-      <!-- Breadcrumb NavXTで出力される部分 ここまで -->
     </div>
   </div>
   <?php } ?>
@@ -94,8 +68,7 @@
         </h3>
         <address class="p-sub-access__address">
           <p>
-            〒000-0000<br />
-            〇〇県△△市□□区▲▲町0-0-0
+            <?php the_field("custom-text"); ?>
           </p>
         </address>
         <div class="p-sub-access__map">
@@ -123,7 +96,7 @@
           <dl class="p-sub-company-profile__list">
             <dt class="p-sub-company-profile__term">所在地</dt>
             <dd class="p-sub-company-profile__description">
-              〒000-0000 〇〇県△△市□□区▲▲町0-0-0
+              <?php the_field("custom-text"); ?>
             </dd>
           </dl>
           <dl class="p-sub-company-profile__list">
@@ -181,5 +154,6 @@
       </div>
     </div>
   </section>
+  <?php get_template_part('template-parts/contact-parts'); ?>
 </main>
 <?php get_footer(); ?>

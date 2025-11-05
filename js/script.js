@@ -23,8 +23,7 @@ jQuery(function ($) {
   });
 
   // ===== メニューアクティブ切り替え =====
-  const menuSelector =
-    ".p-news-menu__list-text, .c-category-list__text";
+  const menuSelector = ".p-news-menu__list-text, .c-category-list__text";
   $(menuSelector).on("click", function () {
     $(`${menuSelector}.active`).removeClass("active");
     $(this).addClass("active");
@@ -58,25 +57,20 @@ jQuery(function ($) {
 
   // ===== 文字数制限・省略 =====
   // newsページ：タイトル46文字以降を省略
-  // スマホ表示時は40文字、PC・タブレットは46文字で省略
-  $(".c-news-item__title p").each(function () {
-    const text = $(this).text().trim();
+
+  $(".c-news-item__title").each(function () {
+    const $t = $(this).find("p").first().length
+      ? $(this).find("p").first()
+      : $(this);
+    const text = $t.text().trim();
     const isSp = window.matchMedia("(max-width: 767px)").matches;
     const limit = isSp ? 40 : 46;
     if (text.length > limit) {
-      $(this).text(text.slice(0, limit) + "…");
+      $t.text(text.slice(0, limit) + "…");
     }
   });
 
-  // news-detailページ：サイドバー記事36文字以降を省略
-  $(".c-aside-menu__text").each(function () {
-    const text = $(this).text().trim();
-    if (text.length > 36) {
-      $(this).text(text.slice(0, 36) + "…");
-    }
-  });
-
-  // news-detailページ：サイドバー記事10文字以降を省略
+  //パンくず文字省略
   $(".current-item").each(function () {
     const text = $(this).text().trim();
     if (text.length > 10) {
@@ -84,8 +78,10 @@ jQuery(function ($) {
     }
   });
 
+
+
   // ===== サブワークスリストタイトルの改行・省略処理 =====
-  $(".c-works-item__title").each(function () {
+  $(".c-works-item__title--detail").each(function () {
     const text = $(this).text().trim();
     let newText = "";
     const isSp = window.matchMedia("(max-width: 767px)").matches;

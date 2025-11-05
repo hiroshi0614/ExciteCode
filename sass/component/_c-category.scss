@@ -24,8 +24,10 @@
     & + .c-category--news {
       margin-left: prem(17);
 
+
       @include mq('md') {
-        margin-left: prem(2);
+        margin-left: prem(6);
+
       }
     }
   }
@@ -38,5 +40,10 @@
       line-height: calc(12 / 10);
       vertical-align: top;
     }
+
+    & + .c-category--works {
+      margin-left: prem(15);
+    }
   }
+
 }

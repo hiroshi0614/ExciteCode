@@ -24,11 +24,11 @@
   }
 
   &__title {
-    margin-top: prem(117);
+    padding-top: prem(117);
     font-size: prem(28);
 
     @include mq("md") {
-      margin-top: prem(60);
+      padding-top: prem(60);
     }
 
     &::before {

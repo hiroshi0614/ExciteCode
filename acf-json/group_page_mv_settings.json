@@ -1,0 +1,128 @@
+{
+  "key": "group_page_mv_settings",
+  "title": "ページメインビジュアル設定",
+  "fields": [
+    {
+      "key": "field_mv_title",
+      "label": "メインビジュアルタイトル",
+      "name": "mv_title",
+      "type": "text",
+      "instructions": "メインビジュアルに表示するタイトルを入力してください",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_mv_subtitle",
+      "label": "メインビジュアルサブタイトル",
+      "name": "mv_subtitle",
+      "type": "text",
+      "instructions": "メインビジュアルに表示するサブタイトルを入力してください",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_mv_pc_image",
+      "label": "PC用メインビジュアル画像",
+      "name": "mv_pc_image",
+      "type": "image",
+      "instructions": "PC表示用のメインビジュアル画像を選択してください",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "url",
+      "preview_size": "medium",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": ""
+    },
+    {
+      "key": "field_mv_sp_image",
+      "label": "SP用メインビジュアル画像",
+      "name": "mv_sp_image",
+      "type": "image",
+      "instructions": "スマートフォン表示用のメインビジュアル画像を選択してください",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "url",
+      "preview_size": "medium",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": ""
+    },
+    {
+      "key": "field_mv_alt",
+      "label": "画像のalt属性",
+      "name": "mv_alt",
+      "type": "text",
+      "instructions": "画像のalt属性（アクセシビリティ用）を入力してください",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "ページごとのメインビジュアル設定を管理します"
+}
